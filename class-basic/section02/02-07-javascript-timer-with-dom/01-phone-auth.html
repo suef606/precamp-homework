@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+        <title>Document</title>
+        <script>
+            function 인증번호요청기능(){
+            const 랜덤한숫자 = Math.random()
+            console.log(랜덤한숫자)
+
+            const 여섯자리숫자 = Math.floor(랜덤한숫자 * 1000000)
+            console.log(여섯자리숫자)
+
+            //숫자를 문자열로 바꾸고 앞에 있는 숫자 자리 안될시 0으로 채워줘.
+            const 인증번호 = String(여섯자리숫자).padStart(6, "0")
+            console.log(인증번호)
+            }        
+            function 인증번호성공알람(가입자이름받는곳){
+            alert("인증번호는:" + 가입자이름받는곳 + "입니다.")
+        }
+
+        function 바꾸는기능(){
+            document.getElementById("여기바꿀래요").innerText = "'${인증번호요청기능}'"
+        }
+
+        function 가입하는기능(){
+            const 가입자명 = document.getElementById("이름입력창").value
+            // 열린태그안에 있는 값을 데려와야할때는 밸류를 씀
+            
+            //document.getElementById("가입자보여주는곳").innerText = 가입자명
+            //document.getElementById("가입자보여주는곳").innerHTML = "<div>가입자명</div>" 
+            //복잡하기 때문에 햅틱으로 바꿔서 사용
+            // document.getElementById("가입자보여주는곳").innerHTML = `
+            //     <div onclick="가입자보여주는기능()">${가입자명}</div>
+            // `
+            document.getElementById("가입자보여주는곳").innerHTML = `
+                <div onclick="가입자보여주는기능('${가입자명}')">${가입자명}</div>
+            `
+            
+        }
+            
+            function 타이머(){
+    
+                let 시간 = 180
+    
+                setInterval(function(){
+    
+                    const 분 = Math.floor(시간 / 60)
+                    const 초 = 시간 % 60
+                    // 나머지 연산자 === %
+                    console.log("남은시간:" + 분 + ":" + 초)
+                    
+                    시간 = 시간 - 1
+                },1000)
+                //1초에 한번씩 기능이 실행됨, 
+                //첨에 1빼고 179로 실행이 되고 시간은 function 바깥에 있어야함
+                document.getElementById("타이머보여주기").innerText = `타이머`
+    
+                
+            }
+        </script>
+</head>
+<body>
+    <div id="인증번호보여주기"> </div>
+    <div id="인증번호보여주는곳">
+    인증번호를 입력하세요: <input type="text" id="인증번호입력창"/>
+    </div>
+    <button onclick="타이머()">인증번호 요청하기</button>
+    <div id="타이머보여주기"> </div>
+    
+
+    <!-- <div id="여기바꿀래요">안녕하세요</div>
+    <button onclick="바꾸는기능()">바꾸자</button> -->
+</body>
+</html>

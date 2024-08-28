@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>타이머 실습</title>
+    <script>
+        function 타이머(){
+
+            let 시간 = 180
+
+            setInterval(function(){
+
+                const 분 = Math.floor(시간 / 60)
+                const 초 = 시간 % 60
+                // 나머지 연산자 === %
+                console.log("남은시간:" + 분 + ":" + 초)
+                
+                시간 = 시간 - 1
+            },1000)
+            //1초에 한번씩 기능이 실행됨, 
+            //첨에 1빼고 179로 실행이 되고 시간은 function 바깥에 있어야함
+            
+
+            
+        }
+    </script>
+</head>
+<body>
+    <button onclick="타이머()">타이머 시작</button>
+</body>
+</html>
